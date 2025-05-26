@@ -1,5 +1,5 @@
 com\demoblaze\pages\ProductPage.class
+com\demoblaze\runners\DemoBlazeRunner.class
 com\demoblaze\stepdefinitions\FlujoCompletoSteps.class
 com\demoblaze\pages\CartPage.class
 com\demoblaze\pages\HomePage.class
-com\demoblaze\runners\FlujoCompletoRunner.class

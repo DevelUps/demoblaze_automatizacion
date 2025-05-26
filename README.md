@@ -1,79 +1,48 @@
-# Automatización DemoBlaze con Serenity BDD
+# Automatización Demoblaze
 
-Este proyecto implementa pruebas automatizadas para el sitio web DemoBlaze utilizando Serenity BDD y el patrón Screenplay.
+Este proyecto contiene pruebas automatizadas para el sitio web Demoblaze utilizando Selenium y Python.
 
-## 🎯 Justificación del Patrón Screenplay
+## Requisitos
 
-Se ha elegido el patrón Screenplay por las siguientes razones:
+- Python 3.8 o superior
+- pip (gestor de paquetes de Python)
 
-1. **Mejor mantenibilidad**: El patrón Screenplay promueve un código más limpio y mantenible al separar claramente las responsabilidades.
-2. **Mayor legibilidad**: Las pruebas se escriben en un lenguaje más cercano al negocio, lo que facilita su comprensión.
-3. **Reutilización de código**: Permite crear tareas y acciones reutilizables de manera más eficiente.
-4. **Escalabilidad**: Facilita la adición de nuevas funcionalidades sin afectar el código existente.
-5. **Mejor manejo de errores**: Proporciona mensajes de error más claros y detallados.
+## Instalación
 
-## 🛠️ Tecnologías Utilizadas
-
-- Java 11
-- Serenity BDD 3.6.15
-- Cucumber 7.11.0
-- Maven
-- JUnit 4.13.2
-
-## 📋 Requisitos Previos
-
-- Java JDK 11 o superior
-- Maven 3.6.0 o superior
-- Navegador Chrome instalado
-
-## 🚀 Ejecución de las Pruebas
-
-Para ejecutar las pruebas, utiliza el siguiente comando:
-
+1. Clonar el repositorio
+2. Instalar las dependencias:
 ```bash
-mvn clean verify
+pip install -r requirements.txt
 ```
 
-Los reportes se generarán automáticamente en la carpeta `target/site/serenity/`.
-
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
-src/
-├── main/
-│   └── java/
-│       └── com/
-│           └── demoblaze/
-│               ├── models/
-│               ├── tasks/
-│               ├── userinterface/
-│               └── utils/
-└── test/
-    ├── java/
-    │   └── com/
-    │       └── demoblaze/
-    │           ├── runners/
-    │           └── stepdefinitions/
-    └── resources/
-        └── features/
+demoblaze_automatizacion/
+├── tests/                    # Directorio de pruebas
+│   ├── test_login.py        # Pruebas de inicio de sesión
+│   └── test_compra.py       # Pruebas de compra
+├── pages/                    # Page Objects
+│   ├── login_page.py        # Página de inicio de sesión
+│   └── home_page.py         # Página principal
+├── utils/                    # Utilidades
+│   └── driver_factory.py    # Configuración del WebDriver
+└── requirements.txt         # Dependencias del proyecto
 ```
 
-## 🔄 Flujo de Prueba
+## Ejecución de Pruebas
 
-1. Registro de nuevo usuario
-2. Inicio de sesión
-3. Agregar teléfono al carrito
-4. Agregar monitor al carrito
-5. Cerrar sesión
-6. Validar carrito vacío
-7. Iniciar sesión nuevamente
-8. Validar productos en carrito
+Para ejecutar todas las pruebas:
+```bash
+pytest
+```
 
-## 📊 Reportes
+Para ejecutar pruebas específicas:
+```bash
+pytest tests/test_login.py
+```
 
-Los reportes de Serenity incluyen:
-- Resumen de pruebas ejecutadas
-- Capturas de pantalla
-- Detalles de cada paso
-- Tiempo de ejecución
-- Estado de las pruebas 
+Para generar reportes HTML:
+```bash
+pytest --html=report.html
+``` 

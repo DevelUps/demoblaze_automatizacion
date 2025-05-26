@@ -109,22 +109,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <reportTitle>${serenity.report.title}</reportTitle>
-                    <reportSubtitle>${serenity.report.subtitle}</reportSubtitle>
-                    <outputDirectory>${project.build.directory}/site/serenity</outputDirectory>
-                    <encoding>${serenity.report.encoding}</encoding>
-                    <locale>${serenity.report.locale}</locale>
-                    <customHTMLTemplates>
-                        <overview>${project.basedir}/src/test/resources/serenity-reports/overview.html</overview>
-                        <!-- Puedes añadir más rutas a plantillas personalizadas si las creas -->
-                    </customHTMLTemplates>
-                    <!-- Aunque los colores se definen en las propiedades, a veces es útil reiterar -->
-                    <reportBackground>${serenity.report.background.color}</reportBackground>
-                    <reportTextsColor>${serenity.report.text.color}</reportTextsColor>
-                    <reportAccentColor>${serenity.report.accent.color}</reportAccentColor>
-                    <!-- ... y así sucesivamente para los otros colores si es necesario -->
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
