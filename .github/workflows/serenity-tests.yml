@@ -1,0 +1,52 @@
+# Workflow para ejecutar pruebas automatizadas con Serenity BDD
+
+name: Serenity Tests
+
+on:
+  push:
+    branches:
+      - main # O la rama principal de tu proyecto
+  pull_request:
+    branches:
+      - main # O la rama principal de tu proyecto
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Usa un runner con Ubuntu para la ejecución
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v4
+
+    - name: Configurar Java 11
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin' # Usar Temurin como distribución de Java
+        cache: 'maven' # Habilitar caché de Maven para descargas rápidas
+
+    - name: Ejecutar pruebas Serenity con Maven
+      run: mvn clean verify serenity:aggregate
+
+    - name: Subir artefacto del reporte Serenity
+      uses: actions/upload-artifact@v4
+      with:
+        name: serenity-report
+        path: target/site/serenity/
+        # Esto guardará el directorio de reporte como un artefacto en la ejecución del workflow.
+        # Puedes descargarlo desde la pestaña 'Actions' de tu repositorio.
+
+    # --- Configuración Opcional para GitHub Pages ---
+    # Descomenta las siguientes líneas si deseas publicar automáticamente el reporte
+    # en GitHub Pages. Necesitarás configurar GitHub Pages en la configuración
+    # de tu repositorio para usar la rama 'gh-pages' o la opción 'Deploy from a branch'.
+    # También puede que necesites ajustar permisos.
+
+    # - name: Desplegar reporte en GitHub Pages
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   if: ${{ github.ref == 'refs/heads/main' }} # Solo desplegar desde la rama principal
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: target/site/serenity/
+    #     cname: example.com # Opcional: tu dominio personalizado
+    # ----------------------------------------------- 

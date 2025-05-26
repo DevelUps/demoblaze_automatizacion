@@ -1,0 +1,8 @@
+com\demoblaze\tasks\AddToCart.class
+com\demoblaze\models\User.class
+com\demoblaze\userinterface\ProductPage.class
+com\demoblaze\questions\CartQuestions.class
+com\demoblaze\userinterface\HomePage.class
+com\demoblaze\tasks\Login.class
+com\demoblaze\tasks\Register.class
+com\demoblaze\tasks\Logout.class
