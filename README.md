@@ -1,48 +1,62 @@
 # Automatización Demoblaze
 
-Este proyecto contiene pruebas automatizadas para el sitio web Demoblaze utilizando Selenium y Python.
+Este proyecto contiene pruebas automatizadas para el sitio web Demoblaze utilizando Serenity BDD, Cucumber y Java.
 
 ## Requisitos
 
-- Python 3.8 o superior
-- pip (gestor de paquetes de Python)
+- Java JDK 11 o superior
+- Maven 3.6 o superior
+- Chrome Browser
 
 ## Instalación
 
 1. Clonar el repositorio
 2. Instalar las dependencias:
 ```bash
-pip install -r requirements.txt
+mvn clean install
 ```
 
 ## Estructura del Proyecto
 
 ```
 demoblaze_automatizacion/
-├── tests/                    # Directorio de pruebas
-│   ├── test_login.py        # Pruebas de inicio de sesión
-│   └── test_compra.py       # Pruebas de compra
-├── pages/                    # Page Objects
-│   ├── login_page.py        # Página de inicio de sesión
-│   └── home_page.py         # Página principal
-├── utils/                    # Utilidades
-│   └── driver_factory.py    # Configuración del WebDriver
-└── requirements.txt         # Dependencias del proyecto
+├── src/
+│   ├── test/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── demoblaze/
+│   │   │           ├── pages/           # Page Objects
+│   │   │           ├── runners/         # Runners de Cucumber
+│   │   │           └── stepdefinitions/ # Definiciones de pasos
+│   │   └── resources/
+│   │       └── features/    # Archivos .feature de Cucumber
+├── target/                  # Directorio de compilación y reportes
+└── pom.xml                 # Configuración de Maven
 ```
 
 ## Ejecución de Pruebas
 
 Para ejecutar todas las pruebas:
 ```bash
-pytest
+mvn clean verify
 ```
 
 Para ejecutar pruebas específicas:
 ```bash
-pytest tests/test_login.py
+mvn clean verify -Dcucumber.filter.tags="@tag"
 ```
 
-Para generar reportes HTML:
-```bash
-pytest --html=report.html
-``` 
+## Reportes
+
+Los reportes de Serenity se generan automáticamente en:
+```
+target/site/serenity/index.html
+```
+
+## Características Implementadas
+
+- Registro de usuario
+- Inicio de sesión
+- Agregar productos al carrito
+- Validación del carrito
+- Cierre de sesión 
